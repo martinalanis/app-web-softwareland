@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import {
   Container,
   Collapse,
@@ -8,9 +9,10 @@ import {
   Nav,
   NavItem,
   NavLink
-} from 'reactstrap';
+} from 'reactstrap'
 
 const Header = () => {
+  const router = useRouter()
   const [isOpen, setIsOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -27,25 +29,32 @@ const Header = () => {
     }
   }
 
+  const goTop = () => {
+    router.replace('')
+    window.scroll({ top: 0 })
+  }
+
   return (
     <div className={`header${sticky ? ' sticky' : ''}`}>
       <Navbar light expand="md">
         <Container>
-          <NavbarBrand href="/">LOGO</NavbarBrand>
+          <NavbarBrand href="/">
+            <img src="/images/logo.svg" alt="" className="logo-image" />
+          </NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
-            <Nav className="m-auto" navbar>
+            <Nav className="ms-auto" navbar>
               <NavItem>
-                <NavLink href="/">Home</NavLink>
+                <NavLink href="#" onClick={goTop}>Inicio</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#feature">Features</NavLink>
+                <NavLink href="#conocenos">Conocenos</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#service">Services</NavLink>
+                <NavLink href="#servicios">Servicios</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#about">About</NavLink>
+                <NavLink href="#nosotros">Nosotros</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
