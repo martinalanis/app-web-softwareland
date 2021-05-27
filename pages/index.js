@@ -1,5 +1,5 @@
-import Layout from "../components/Layout";
-import Header from "../components/Header";
+import Layout from "../components/Layout"
+import Header from "../components/Header"
 const Index = () => {
   return (
     <Layout pageTitle="Web App Softwareland">
