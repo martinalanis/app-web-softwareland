@@ -32,7 +32,10 @@ const Header = () => {
   const goTop = () => {
     router.replace('')
     window.scroll({ top: 0 })
+    setIsOpen(false)
   }
+
+  const closeMobileNav = () => isOpen && setIsOpen(false)
 
   return (
     <div className={`header${sticky ? ' sticky' : ''}`}>
@@ -48,13 +51,13 @@ const Header = () => {
                 <NavLink href="#" onClick={goTop}>Inicio</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#conocenos">Conocenos</NavLink>
+                <NavLink href="#conocenos" onClick={closeMobileNav}>Conocenos</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#servicios">Servicios</NavLink>
+                <NavLink href="#servicios" onClick={closeMobileNav}>Servicios</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#nosotros">Nosotros</NavLink>
+                <NavLink href="#nosotros" onClick={closeMobileNav}>Nosotros</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
